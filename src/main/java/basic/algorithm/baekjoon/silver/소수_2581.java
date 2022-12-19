@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.silver;
 
 import java.util.Scanner;
 
@@ -16,20 +16,20 @@ public class 소수_2581 {
         boolean isMin = true;
 
         for (int i = M; i <= N; i++) {
-            boolean isSosu = true;
+            boolean isPrime = true;
 
             //1인 경우
             if (i == 1) continue;
 
             for (int j = 2; j <= Math.sqrt(i); j++) {
                 if (i % j == 0){
-                    isSosu = false;
+                    isPrime = false;
                     break;
                 }
             }
 
             //소수인 경우
-            if (isSosu) {
+            if (isPrime) {
                 //최소값인 경우
                 if(isMin){
                     min = i;
