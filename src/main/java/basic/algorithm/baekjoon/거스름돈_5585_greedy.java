@@ -15,8 +15,8 @@ public class 거스름돈_5585_greedy {
         //동전
         int[] coins = {500, 100, 50, 10, 5, 1};
 
+        //지불한 동전 개수
         int count = 0;
-
         for (int i = 0; i < coins.length; i++) {
             if(remain == 0) break;
 
