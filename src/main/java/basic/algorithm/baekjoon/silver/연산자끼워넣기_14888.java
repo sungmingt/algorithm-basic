@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.silver;
 
 import java.util.Scanner;
 
@@ -35,6 +35,7 @@ public class 연산자끼워넣기_14888 { //백트래킹 문제
 
     public static void dfs(int num, int depth) {  //num은 연산 결과값, depth는 1부터 시작
         if(depth == numberCount){ //모든 숫자를 다 순회했을 때 재귀 종료
+            System.out.println("연산 결과값 : " + num);
             if(max < num) max = num;  //최대값 비교
             if(min > num) min = num;  //최소값 비교
             return;
