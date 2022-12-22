@@ -27,6 +27,5 @@ public class 등수매기기_2012_greedy {
         }
 
         System.out.println(result);
-
     }
 }
