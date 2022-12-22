@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.silver;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -17,6 +17,8 @@ public class 괄호의값_2504_stack {
         int value = 1;
         int result = 0;
 
+        //value =  1 2 4 2 6 18  6  2
+        //result = 0 0 0 4 4  4 22 28
         for (int i = 0; i < N.length(); i++) {
             char K = N.charAt(i);
 

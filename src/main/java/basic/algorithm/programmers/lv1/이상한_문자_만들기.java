@@ -1,6 +1,7 @@
-package basic.algorithm.Programmers;
+package basic.algorithm.programmers.lv1;
 
 public class 이상한_문자_만들기 {
+
     public static void main(String[] args) {
         System.out.println("[" + solution("hello my name is jason ") + "]");
     }

@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.gold;
 
 import java.util.LinkedList;
 import java.util.Scanner;

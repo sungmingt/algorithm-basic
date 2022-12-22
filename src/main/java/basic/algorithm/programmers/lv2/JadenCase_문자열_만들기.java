@@ -1,4 +1,4 @@
-package basic.algorithm.programmers.lev2;
+package basic.algorithm.programmers.lv2;
 
 public class JadenCase_문자열_만들기 {
 

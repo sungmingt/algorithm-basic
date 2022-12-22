@@ -1,6 +1,7 @@
-package basic.algorithm.Programmers;
+package basic.algorithm.programmers.lv1;
 
 public class 윤년 { //2016년
+
     public String solution(int a, int b) {
         //1월 1일 : 금요일
         //윤년 : 2월 29일까지

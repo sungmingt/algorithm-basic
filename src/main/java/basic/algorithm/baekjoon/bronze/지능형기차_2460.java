@@ -1,11 +1,10 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.bronze;
 
 import java.util.Scanner;
 
 public class 지능형기차_2460 {
 
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
 
         int total = 10;

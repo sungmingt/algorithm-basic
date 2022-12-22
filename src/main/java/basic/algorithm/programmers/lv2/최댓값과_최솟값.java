@@ -1,4 +1,4 @@
-package basic.algorithm.programmers.lev2;
+package basic.algorithm.programmers.lv2;
 
 import java.util.Arrays;
 

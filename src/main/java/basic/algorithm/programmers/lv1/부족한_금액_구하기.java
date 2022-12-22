@@ -1,4 +1,4 @@
-package basic.algorithm.programmers;
+package basic.algorithm.programmers.lv1;
 
 public class 부족한_금액_구하기 {
 
