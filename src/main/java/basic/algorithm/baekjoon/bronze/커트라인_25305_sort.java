@@ -12,13 +12,11 @@ public class 커트라인_25305_sort {
         int k = sc.nextInt();
 
         int[] scoreList = new int[N];
-
         for (int i = 0; i < N; i++) {
             scoreList[i] = sc.nextInt();
         }
 
         Arrays.sort(scoreList);
-
         System.out.println(scoreList[scoreList.length-k]);
     }
 }
