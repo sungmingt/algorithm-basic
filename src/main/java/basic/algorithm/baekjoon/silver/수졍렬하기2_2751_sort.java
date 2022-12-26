@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.silver;
 
 import java.util.*;
 
