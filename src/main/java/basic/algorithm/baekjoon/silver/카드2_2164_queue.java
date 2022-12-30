@@ -10,17 +10,10 @@ public class 카드2_2164_queue {
         int N = sc.nextInt();
 
         LinkedList<Integer> list = new LinkedList();
-
         for (int i = 1; i <= N; i++) {
             list.add(i);
         }
 
-        //1 2 3 4 5 6
-        //3 4 5 6 2
-        //5 6 2 4
-        //2 4 6
-        //6 4
-        //4
         while (list.size() > 1) {
             list.pop();
             Integer input = list.pop();
@@ -28,6 +21,5 @@ public class 카드2_2164_queue {
         }
 
         System.out.println(list.pop());
-
     }
 }
