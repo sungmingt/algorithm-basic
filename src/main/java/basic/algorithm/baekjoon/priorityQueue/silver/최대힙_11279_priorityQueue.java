@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.priorityQueue;
+package basic.algorithm.baekjoon.priorityQueue.silver;
 
 import java.util.PriorityQueue;
 import java.util.Scanner;
