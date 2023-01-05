@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.silver;
+package basic.algorithm.baekjoon.greedy.silver;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -21,7 +21,6 @@ public class 등수매기기_2012_greedy {
         //예상 순위 : 오름차순 나열
 
         Arrays.sort(expectedRatings);
-
         for (int i = 0; i < N; i++) {
             result += Math.abs(expectedRatings[i] - (i + 1));
         }

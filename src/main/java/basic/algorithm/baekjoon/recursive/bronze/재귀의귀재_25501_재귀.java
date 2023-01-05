@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.recursive.bronze;
 
 import java.util.Scanner;
 

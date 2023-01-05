@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.silver;
+package basic.algorithm.baekjoon.greedy.silver;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -7,7 +7,6 @@ public class ProjectTeams_20044_greedy {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         int memberCount = sc.nextInt() * 2;
 
         int[] cap = new int[memberCount];

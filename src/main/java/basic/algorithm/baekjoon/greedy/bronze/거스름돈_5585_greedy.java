@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bronze;
+package basic.algorithm.baekjoon.greedy.bronze;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.silver;
+package basic.algorithm.baekjoon.stack.silver;
 
 import java.util.Scanner;
 import java.util.Stack;

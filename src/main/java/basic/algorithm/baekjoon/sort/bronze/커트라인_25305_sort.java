@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bronze;
+package basic.algorithm.baekjoon.sort.bronze;
 
 import java.util.Arrays;
 import java.util.Scanner;

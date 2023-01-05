@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.silver.greedy;
+package basic.algorithm.baekjoon.greedy.silver;
 
 import java.util.Arrays;
 import java.util.Comparator;

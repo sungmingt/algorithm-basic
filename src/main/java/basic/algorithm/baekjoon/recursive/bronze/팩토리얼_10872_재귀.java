@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bronze;
+package basic.algorithm.baekjoon.recursive.bronze;
 
 import java.io.BufferedReader;
 import java.io.IOException;

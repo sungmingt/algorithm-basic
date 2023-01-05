@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.gold;
+package basic.algorithm.baekjoon.greedy.gold;
 
 import java.util.Arrays;
 import java.util.Collections;
