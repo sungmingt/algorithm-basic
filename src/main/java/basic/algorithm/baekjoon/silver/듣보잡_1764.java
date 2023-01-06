@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.silver;
 
 import java.util.*;
 
@@ -29,8 +29,5 @@ public class 듣보잡_1764 { //ArrayList.contains()와 HashSet.contains() 내�
         for (String s : bothList) {
             System.out.println(s);
         }
-
-
-
     }
 }
