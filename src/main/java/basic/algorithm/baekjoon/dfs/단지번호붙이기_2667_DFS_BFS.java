@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.dfs;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -38,8 +38,8 @@ public class 단지번호붙이기_2667_DFS_BFS {  //다시 풀어보기
         }
 
         Arrays.sort(apartmentSize);
-
         System.out.println(apartmentCount);
+
         for (int i = apartmentSize.length - apartmentCount; i < apartmentSize.length; i++) {
             System.out.println(apartmentSize[i]);
         }
