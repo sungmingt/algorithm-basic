@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class 미로탐색_2178_BFS {
+public class 미로탐색_2178_BFS { //다시 풀어보기
 
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, 1, -1};
