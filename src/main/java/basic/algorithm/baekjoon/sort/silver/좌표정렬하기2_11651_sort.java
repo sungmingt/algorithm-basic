@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.sort.silver;
 
 import java.util.Arrays;
 import java.util.Comparator;
