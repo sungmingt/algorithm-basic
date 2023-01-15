@@ -1,10 +1,10 @@
-package basic.algorithm.baekjoon.bfs;
+package basic.algorithm.baekjoon.bfs.gold;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class 토마토_7576_BFS {
+public class 토마토_7576_BFS { //풀이 한번 찾아보기
 
     static int[][] box;
     static int[][] visited;
