@@ -8,9 +8,7 @@ public class 기능개발_queue {
         List<Integer> answer = new ArrayList<>();
         Queue<Integer> q = new LinkedList<>();
 
-        for (Integer p : progresses) {
-            q.add(p);
-        }
+        for (Integer p : progresses) q.add(p);
 
         int totalTimeSpent = 0;
         while (!q.isEmpty()) {
