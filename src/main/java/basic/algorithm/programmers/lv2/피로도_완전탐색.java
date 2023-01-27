@@ -22,14 +22,15 @@ public class 피로도_완전탐색 {
     static void dfs(int startVertex, int k, int currentVisitCount, int[][] dungeons) {
         visited[startVertex] = true;
 
-        //최소 피로도 충족 시 방문
+        //최소 피로도 충족 시에만 방문 후 소유 피로도 감소
         if (dungeons[startVertex][0] <= k) {
-            currentVisitCount++;
+            currentVisitCount++;   //지역변수 조작이기 때문에 재귀 후 돌아온다.
+            k -= dungeons[startVertex][1];
         }
 
         for (int i = 0; i < dungeons.length; i++) {
             if (!visited[i]) {
-                dfs(i, k - dungeons[startVertex][1], currentVisitCount, dungeons);
+                dfs(i, k, currentVisitCount, dungeons);
             }
         }
 
