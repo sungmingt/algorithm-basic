@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bfs;
+package basic.algorithm.baekjoon.bfs.gold;
 
 import java.util.*;
 
