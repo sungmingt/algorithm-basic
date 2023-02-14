@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bfs.gold;
+package basic.algorithm.baekjoon.retry;
 
 import java.util.LinkedList;
 import java.util.Queue;

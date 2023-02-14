@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.이분탐색;
 
 import java.util.Arrays;
 import java.util.Scanner;
