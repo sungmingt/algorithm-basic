@@ -1,4 +1,4 @@
-package basic.algorithm.programmers.lv2;
+package basic.algorithm.programmers.lv2.greedy;
 
 import java.util.*;
 

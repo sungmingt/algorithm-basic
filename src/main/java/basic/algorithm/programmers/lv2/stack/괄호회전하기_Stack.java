@@ -1,4 +1,4 @@
-package basic.algorithm.programmers.lv2;
+package basic.algorithm.programmers.lv2.stack;
 
 import java.util.Stack;
 
