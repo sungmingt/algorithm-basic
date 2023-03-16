@@ -13,6 +13,7 @@ public class 근손실_18429_backtracking {
     static boolean[] visited;
     static int[] kits;
     static int answer = 0;
+
     public static void main(String[] args) throws IOException {
         //중량 500
         //하루에 K만큼 감소
@@ -20,7 +21,6 @@ public class 근손실_18429_backtracking {
         //중량을 증가시킬수 있는 N개의 서로 다른 키트
         //하루에 1개씩 사용
         //항상 중량이 500이상으로 유지할 수 있는 경우의 수를 출력
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
@@ -33,7 +33,7 @@ public class 근손실_18429_backtracking {
         }
 
         visited = new boolean[N];
-        backtracking(0, 500);
+        backtracking(0, weight);
 
         System.out.println(answer);
     }
