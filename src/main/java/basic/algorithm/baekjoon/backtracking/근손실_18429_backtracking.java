@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bfs;
+package basic.algorithm.baekjoon.backtracking;
 
 import java.io.BufferedReader;
 import java.io.IOException;
