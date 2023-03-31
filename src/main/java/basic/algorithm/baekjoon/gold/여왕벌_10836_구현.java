@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bfs;
+package basic.algorithm.baekjoon.gold;
 
 import java.io.BufferedReader;
 import java.io.IOException;
