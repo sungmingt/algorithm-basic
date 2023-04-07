@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.backtracking;
+package basic.algorithm.baekjoon.queue;
 
 import java.util.LinkedList;
 import java.util.Queue;
