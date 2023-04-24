@@ -71,13 +71,14 @@ public class 최단경로_1753_Dijkstra { //다익스트라 (다시 풀어보기
             }
         }
     }
-}
-class Node{
-    int vertex;
-    int cost;
 
-    public Node(int vertex, int cost) {
-        this.vertex = vertex;
-        this.cost = cost;
+    static class Node{
+        int vertex;
+        int cost;
+
+        public Node(int vertex, int cost) {
+            this.vertex = vertex;
+            this.cost = cost;
+        }
     }
 }

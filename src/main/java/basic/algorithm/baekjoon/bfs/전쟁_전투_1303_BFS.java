@@ -91,14 +91,14 @@ public class 전쟁_전투_1303_BFS {
     static boolean isMovable(int x, int y, int xLimit, int yLimit) {
         return 0 <= x && 0 <= y && x < xLimit && y < yLimit;
     }
-}
 
-class Point{
-    int x;
-    int y;
+    static class Point{
+        int x;
+        int y;
 
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }

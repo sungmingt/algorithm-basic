@@ -66,14 +66,14 @@ public class 숨바꼭질3_13549_Dijkstra {
 
         return minDistance;
     }
-}
 
-class Node{
-    int idx;
-    int distance;
+    static class Node{
+        int idx;
+        int distance;
 
-    public Node(int idx, int distance) {
-        this.idx = idx;
-        this.distance = distance;
+        public Node(int idx, int distance) {
+            this.idx = idx;
+            this.distance = distance;
+        }
     }
 }

@@ -70,14 +70,14 @@ public class 토마토_7576_BFS { //풀이 한번 찾아보기
         //다 익을 수 없다면
         System.out.println(-1);
     }
-}
 
-class Point{
-    int x;
-    int y;
+    static class Point{
+        int x;
+        int y;
 
-    Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+        Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }

@@ -63,13 +63,14 @@ public class 나이트의이동_7562_BFS {
 
         return -1;
     }
-}
-class Index{
-    int x;
-    int y;
 
-    Index(int x, int y) {
-        this.x = x;
-        this.y = y;
+    static class Index{
+        int x;
+        int y;
+
+        Index(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
     }
 }

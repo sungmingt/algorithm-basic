@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.retry;
+package basic.algorithm.baekjoon.retry.bfs;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -102,15 +102,16 @@ public class 토마토2_7569_BFS {
     static boolean canMove(int newH, int newX, int newY) {
         return 0 <= newH && newH < H && 0 <= newX && newX < N && 0 <= newY && newY < M;
     }
-}
-class Tomato{
-    int h;
-    int x;
-    int y;
+    static class Tomato{
+        int h;
+        int x;
+        int y;
 
-    Tomato(int h, int x, int y) {
-        this.h = h;
-        this.x = x;
-        this.y = y;
+        Tomato(int h, int x, int y) {
+            this.h = h;
+            this.x = x;
+            this.y = y;
+        }
     }
 }
+
