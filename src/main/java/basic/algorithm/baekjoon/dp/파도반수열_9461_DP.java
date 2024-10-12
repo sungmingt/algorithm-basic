@@ -1,40 +1,36 @@
 package basic.algorithm.baekjoon.dp;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class 파도반수열_9461_DP{
 
-    static long[] dp;
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+    static long[] dp = new long[101];
+    static int N;
 
-        dp = new long[101];
-        dp[1] = 1;
-        dp[2] = 1;
-        dp[3] = 1;
-        dp[4] = 2;
-        dp[5] = 2;
+    public static void main(String[] args) throws IOException {
+        //P(1)부터 P(10)까지 첫 10개 숫자는 1, 1, 1, 2, 2, 3, 4, 5, 7, 9
+        //규칙 : N=4일때부터 P(N) == P(N-2) + P(N-3)
 
-        for (int i = 0; i < N; i++) {
-            //P(11) = P(10) + P(6)
-            //P(10) = P(9) + P(5)
-            //P(9) = P(8) + P(4)
-            //P(N) = P(N-1) + P(N - 5)  ->  N > 5 일 경우에만 성립가능
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int T = Integer.parseInt(br.readLine());
 
-            int input = sc.nextInt();
-            System.out.println(P(input));
+        for (int i = 0; i < T; i++) {
+            N = Integer.parseInt(br.readLine());
+
+            dp[1] = 1;
+            dp[2] = 1;
+            dp[3] = 1;
+            System.out.println(doDP(N));
         }
     }
 
-    static long P(int n) {
-        if (dp[n] != 0 || n <= 5) {  //이미 구했던 값일 경우
-            return dp[n];
+    static long doDP(int N) {
+        if (dp[N] == 0) {
+            dp[N] = doDP(N - 2) + doDP(N - 3);
         }
 
-        dp[n-1] = P(n - 1);
-        dp[n-5] = P(n - 5);
-
-        return dp[n - 1] + dp[n - 5];
+        return dp[N];
     }
 }
