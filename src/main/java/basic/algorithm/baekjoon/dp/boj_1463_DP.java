@@ -4,39 +4,44 @@ import java.util.Scanner;
 
 public class boj_1463_DP {
 
-    static Integer[] dp;
+    static int dp[];
+    static int N;
 
     public static void main(String[] args) {
-        //2 또는 3으로 나누어 떨어지면 수행, 아니면 1 빼기
-        //1을 만들어야 한다.
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        dp = new Integer[N + 1];
 
-        System.out.println(dp(N));
+        Scanner sc = new Scanner(System.in);
+        N = sc.nextInt();
+
+        //15 -> 5 -> 4 -> 2 -> 1
+        //15 -> 14 -> 7 -> 6 -> 2 -> 1
+        //6 -> 3 -> 1
+        //6 -> 5 -> 4 -> 2 -> 1
+
+        //3,2로 모두 나누어질경우 -> 세 경우의 수 중 최적값(최소 수행 값)을 구해야 한다.
+        //3으로만 나누어질경우 -> 3으로 나누었을때와 1을 뺐을때 중 최적값을 구해야한다.
+        //...
+
+        dp = new int[N + 1];
+        System.out.println(doDP(N));
     }
 
-    static int dp(int num) {
-        if(num == 1){
+    static int doDP(int x) {
+        if (x == 1) {
             return 0;
         }
 
-        if (num <= 3) {
-            return 1;
-        }
-
-        if (dp[num] == null) {
-            if (num % 6 == 0) {
-                dp[num] = Math.min(Math.min(dp(num / 3), dp(num / 2)), dp(num - 1)) + 1;
-            } else if (num % 3 == 0) {
-                dp[num] = Math.min(dp(num / 3), dp(num - 1)) + 1;
-            } else if (num % 2 == 0) {
-                dp[num] = Math.min(dp(num / 2), dp(num - 1)) + 1;
+        if (dp[x] == 0) {
+            if (x % 6 == 0) {
+                dp[x] = Math.min(Math.min(doDP(x / 3), doDP(x / 2)), doDP(x - 1)) + 1;
+            } else if (x % 3 == 0) {
+                dp[x] = Math.min(doDP(x / 3), doDP(x - 1)) + 1;
+            } else if (x % 2 == 0) {
+                dp[x] = Math.min(doDP(x / 2), doDP(x - 1)) + 1;
             } else {
-                dp[num] = dp(num - 1) + 1;
+                dp[x] = doDP(x - 1) + 1;
             }
         }
 
-        return dp[num];
+        return dp[x];
     }
 }
