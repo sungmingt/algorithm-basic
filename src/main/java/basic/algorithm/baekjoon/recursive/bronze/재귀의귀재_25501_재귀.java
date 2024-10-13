@@ -11,7 +11,7 @@ public class 재귀의귀재_25501_재귀 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
+        N = Integer.parseInt(br.readLine());
 
         StringBuilder sb = new StringBuilder();
 
