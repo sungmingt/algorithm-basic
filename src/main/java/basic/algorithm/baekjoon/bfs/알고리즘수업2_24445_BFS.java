@@ -7,56 +7,65 @@ import java.util.*;
 
 public class 알고리즘수업2_24445_BFS {
 
-    static Queue<Integer> q;
-    static List<ArrayList<Integer>> arr;
-    static boolean[] visited;
-    static int[] visitOrder;
-    static int curVisitOrder;
-    static int N, M, R;
+    static ArrayList<ArrayList<Integer>> graph;
+    static int[] isVisited;
+    static int visitOrder;
+
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
-        R = Integer.parseInt(st.nextToken());
 
-        visited = new boolean[N + 1];
-        visitOrder = new int[N + 1];
-        arr = new ArrayList<>(N + 1);
-        for (int i = 0; i < N + 1; i++) {
-            arr.add(new ArrayList<>());
+        int vertexCount = Integer.parseInt(st.nextToken());
+        int edgeCount = Integer.parseInt(st.nextToken());
+        int startVertex = Integer.parseInt(st.nextToken());
+
+        isVisited = new int[vertexCount + 1];
+        graph = new ArrayList<>();
+
+        for (int i = 0; i <= vertexCount; i++) {
+            graph.add(new ArrayList<>());
         }
 
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < edgeCount; i++) {
             st = new StringTokenizer(br.readLine());
-            int from = Integer.parseInt(st.nextToken());
-            int to = Integer.parseInt(st.nextToken());
-            arr.get(from).add(to);
-            arr.get(to).add(from);
+            int start = Integer.parseInt(st.nextToken());
+            int end = Integer.parseInt(st.nextToken());
+
+            graph.get(start).add(end);
+            graph.get(end).add(start);
         }
 
-        for (int i = 1; i < N + 1; i++) {
-            arr.get(i).sort(Collections.reverseOrder());
+        for (int i = 1; i < graph.size(); i++) {
+            Collections.sort(graph.get(i), Collections.reverseOrder());
         }
 
-        //내림차순 정렬
-        q = new LinkedList<>();
-        q.add(R);
+        bfs(startVertex);
+
+        for (int i = 1; i < isVisited.length; i++) {
+            System.out.println(isVisited[i]);
+        }
+    }
+
+    static void bfs(int start) {
+        visitOrder = 1;
+        isVisited[start] = visitOrder++;
+
+        Queue<Integer> q = new LinkedList<>();
+        q.offer(start);
+
         while (!q.isEmpty()) {
             Integer cur = q.poll();
-            if (!visited[cur]) {
-                visited[cur] = true;
-                visitOrder[cur] = ++curVisitOrder;
-                arr.get(cur).stream()
-                        .filter(i -> !visited[i])
-                        .forEach(i -> q.offer(i));
-            }
-        }
 
-        for (int i = 1; i < visited.length; i++) {
-            System.out.println(visitOrder[i]);
+            for (int i = 0; i < graph.get(cur).size(); i++) {
+                Integer next = graph.get(cur).get(i);
+
+                if (isVisited[next] == 0) {
+                    isVisited[next] = visitOrder++;
+                    q.offer(next);
+                }
+            }
         }
     }
 }
