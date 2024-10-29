@@ -1,28 +1,31 @@
 package basic.algorithm.baekjoon.bronze;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-public class 지능형기차_2460 {
+public class boj_지능형기차_2460 {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    static StringTokenizer st;
+    
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int total = 10;
-        int max = 0;
-        int current = 0;
+        int maxMember = 0;
+        int currentMember = 0;
+        
+        for (int i = 0; i < 10; i++) {
+            st = new StringTokenizer(br.readLine());
+            int out = Integer.parseInt(st.nextToken());
+            int in = Integer.parseInt(st.nextToken());
 
-        while (total > 0) {
-            int out = sc.nextInt();
-            int in = sc.nextInt();
+            currentMember -= out;
+            currentMember += in;
 
-            current = current - out + in;
-            if (current > max) {
-                max = current;
-            }
-
-            total --;
+            if (maxMember < currentMember) maxMember = currentMember;
         }
 
-        System.out.println(max);
+        System.out.println(maxMember);
     }
 }
