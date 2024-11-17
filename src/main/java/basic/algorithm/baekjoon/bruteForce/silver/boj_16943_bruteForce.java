@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bruteForce;
+package basic.algorithm.baekjoon.bruteForce.silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
