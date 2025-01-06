@@ -13,7 +13,7 @@ public class lv2_다리를지나는트럭_queue {
         Queue<TruckInfo> q = new LinkedList<>();
 
         //현재 트럭의 위치를 어디에 저장할지, -> 트럭의 위치에 따라 언제 도착할지 결정하게 되기 때문에
-        //예를 들어, 다음과 같을경우 [truck1 x x truck2]
+        //예를 들어, 다음과 같을경우 [truck1 x x truck2] 문제가 생김
         // -> 차량이 들어간 시간 정보를 저장한다.
 
         while (truckNum < truck_weights.length) {
