@@ -1,13 +1,13 @@
-package basic.algorithm.baekjoon;
+package basic.algorithm.baekjoon.stack.silver;
 
 import java.io.*;
 import java.util.Stack;
 
-public class boj_1406_자료구조활용 {
+public class boj_1406_stack {
 
     static Stack<Character> leftStr;
     static Stack<Character> rightStr;
-    static int cursor;
+    static int N;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,15 +17,16 @@ public class boj_1406_자료구조활용 {
         rightStr = new Stack<>();
         char[] arr = br.readLine().toCharArray();
 
+        //초기 커서는 마지막에 위치하므로 leftStr에 push
         for (int i = 0; i < arr.length; i++) {
             leftStr.push(arr[i]);
         }
 
-        int N = Integer.parseInt(br.readLine());
+        N = Integer.parseInt(br.readLine());
 
         //문자열의 길이가 4라면 [abcd]
         //cursor는 0 ~ 4
-        //cursor : 1 -> 왼쪽은 str[0], 오른쪽은 str[1]
+        //cursor : 1 -> 왼쪽은 a, 오른쪽은 bcd
 
         for (int i = 0; i < N; i++) {
             String[] s = br.readLine().split(" ");
