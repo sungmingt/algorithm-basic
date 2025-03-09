@@ -1,78 +1,100 @@
 package basic.algorithm.baekjoon.이분탐색;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 
-public class 숫자카드_10815_이분탐색 { //다시 풀어보기
-    //가지고 있다 : 1
-    //없다 : 0
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt(); //가지고 있는 숫자 개수
+public class 숫자카드_10815_이분탐색 {
 
-        int[] ownCards = new int[N];
+    static int N, M;
+    static int[] cards;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        cards = new int[N];
+
+        //input
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            ownCards[i] = sc.nextInt();
+            cards[i] = Integer.parseInt(st.nextToken());
         }
 
-        //이분 탐색을 위해서는 배열이 정렬되어 있어야 한다.
-        Arrays.sort(ownCards);
+        //sort
+        Arrays.sort(cards);
 
-        // {-10, 2, 3, 6, 8, 10}
-        // input = 7
-        //mid = 6, left = -10, right = 10
-        //mid = 8, left = 6, right = 10
-        //mid = 6, left = 6, right = 8
-        //input = 10
-        //mid = 6, left = -10, right = 10
-        //mid = 8  left = 6, right = 10
-        //mid = 8, left = 8, right = 10
-        //mid =
-        int mid = ownCards.length / 2;
-        int left = 0;
-        int right = ownCards.length - 1;
+        M = Integer.parseInt(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
-        int M = sc.nextInt(); //입력 받을 카드 개수
+        st = new StringTokenizer(br.readLine());
+
         for (int i = 0; i < M; i++) {
-            int input = sc.nextInt();
+            int num = Integer.parseInt(st.nextToken());
 
-            while (left <= right) {
+            int start = 0;
+            int end = N - 1;
+            int mid;
+            boolean isContained = false;
 
-                if (ownCards[mid] == input) { //같은 숫자를 찾은 경우
-                    sb.append(1 + " ");
+            while (start <= end) {
+                mid = (start + end) / 2;
+
+                if (cards[mid] == num) {
+                    isContained = true;
                     break;
-                }else if (ownCards[mid] > input){ //중간 값이 더 클때 -> 중간값 이상의 값은 모두 제외
-                    right = mid - 1;
-                } else if (ownCards[mid] < input) {
-                    left = mid + 1;
                 }
 
-                mid = (left + right) / 2;
+                // 1 3 6 9 13
+                if (cards[mid] < num) {
+                    start = mid + 1;
+                } else {
+                    end = mid - 1;
+                }
             }
 
-            sb.append(0 + " ");
-
-            mid = ownCards.length / 2;
-            left = 0;
-            right = ownCards.length - 1;
+            if (isContained) {
+                sb.append(1).append(" ");
+            } else {
+                sb.append(0).append(" ");
+            }
         }
 
-
-//        int[] result = new int[inputList.length];
-//        for (int i = 0; i < inputList.length; i++) {
-//            int ownCard = ownCards[i];
-//
-//            if (inputList[mid] == ownCard) { //같은 숫자를 찾은 경우
-//                result[i]
-//
-//            }
-//            if (inputList[mid] > ownCard) //중간 값이 더 클때 -> 중간값 이상의 값은 모두 제외
-//
-//        }
-
         System.out.println(sb);
-
-
     }
 }
+
+
+    //HashSet 풀이
+//    static int N, M;
+//    static Set<Integer> cards;
+//
+//    public static void main(String[] args) throws IOException {
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        N = Integer.parseInt(br.readLine());
+//        cards = new HashSet<>();
+//
+//        //input
+//        StringTokenizer st = new StringTokenizer(br.readLine());
+//        for (int i = 0; i < N; i++) {
+//            cards.add(Integer.parseInt(st.nextToken()));
+//        }
+//
+//        M = Integer.parseInt(br.readLine());
+//        StringBuilder sb = new StringBuilder();
+//
+//        st = new StringTokenizer(br.readLine());
+//        for (int i = 0; i < M; i++) {
+//            int num = Integer.parseInt(st.nextToken());
+//
+//            if (cards.contains(num)) {
+//                sb.append(1);
+//            } else {
+//                sb.append(0);
+//            }
+//
+//            sb.append(" ");
+//        }
+//
+//        System.out.println(sb);
+//    }
