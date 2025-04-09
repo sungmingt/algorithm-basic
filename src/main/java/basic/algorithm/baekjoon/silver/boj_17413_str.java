@@ -27,41 +27,33 @@ public class boj_17413_str {
             char c = str.charAt(i);
 
             if (c == '<') {
-
-                while (!word.isEmpty()) {
-                    sb.append(word.pop());
-                }
-
+                flipAndWrite();
                 sb.append(c);
 
                 while (true) {
                     i++;
 
                     char t = str.charAt(i);
+                    sb.append(t);
 
-                    if (t == '>') {
-                        sb.append(t);
-                        break;
-                    } else {
-                        sb.append(t);
-                    }
+                    if (t == '>')break;
                 }
 
             } else if (c == ' ') {
-                while (!word.isEmpty()) {
-                    sb.append(word.pop());
-                }
-
+                flipAndWrite();
                 sb.append(c);
             } else {
                 word.push(c);
             }
         }
 
+        flipAndWrite();
+        System.out.println(sb);
+    }
+
+    static void flipAndWrite() {
         while (!word.isEmpty()) {
             sb.append(word.pop());
         }
-
-        System.out.println(sb);
     }
 }
