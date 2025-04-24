@@ -14,14 +14,13 @@ public class boj_1920_이분탐색 {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         N = Integer.parseInt(br.readLine());
         arr = new int[N];
         st = new StringTokenizer(br.readLine());
 
+        //input
         for (int i = 0; i < N; i++) {
-            int input = Integer.parseInt(st.nextToken());
-            arr[i] = input;
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
         //sort
@@ -29,38 +28,36 @@ public class boj_1920_이분탐색 {
 
         M = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
 
+        //input + search
         for (int i = 0; i < M; i++) {
-            int num = Integer.parseInt(st.nextToken());
+            //input
+            int target = Integer.parseInt(st.nextToken());
 
-            //이분 탐색 : start와 end를 변경해가며 해당 수가 존재하는지 찾는다? curIdx를 변경해가며 찾는다?
-
+            //search
             int start = 0;
             int end = arr.length - 1;
             int mid = (start + end) / 2;
             boolean isContained = false;
 
             while (start <= end) {
-
-                if (num == arr[mid]) {
+                if (arr[mid] == target) {
                     isContained = true;
                     break;
-                } else if (arr[mid] < num) {
+                } else if (arr[mid] < target) {
                     start = mid + 1;
-                    mid = (start + end) / 2;
                 } else {
-                    end = mid;
-                    mid = (start + end) / 2;
+                    end = mid - 1;
                 }
+
+                mid = (start + end) / 2;
             }
 
-            if(isContained) System.out.println(1);
-            else System.out.println(0);
-
-            //1 3 5 7 9
-            //6
-            //4
-            //3
+            sb.append(isContained ? 1 : 0);
+            sb.append("\n");
         }
+
+        System.out.println(sb);
     }
 }
