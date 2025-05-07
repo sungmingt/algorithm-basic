@@ -30,11 +30,12 @@ public class boj_16508_bitMasking {
         }
 
         // 모든 부분집합 탐색 (1부터 시작: 최소 1권 선택)
+        // ex) 0101 -> 0번째와 2번째 책 선택
         for (int i = 1; i < (1 << N); i++) {
             alpha = new int[26];
             int totalCost = 0;
 
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < N; j++) { //선택된 책들을 찾는다. 해당 책들을 모두 탐색했을때, 주어진 문자열을 만들수 있어야한다.
                 if ((i & (1 << j)) != 0) { //j번째 책이 선택 된 책인 경우
                     totalCost += bookList.get(j).price;
                     for (char c : bookList.get(j).title.toCharArray()) {
