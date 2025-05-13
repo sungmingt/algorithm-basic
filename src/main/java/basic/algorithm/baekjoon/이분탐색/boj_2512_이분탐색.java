@@ -10,69 +10,61 @@ public class boj_2512_이분탐색 {
 
     static int N;
     static int[] budgetRequests;
-    static long maxStandard;
-    static long maxBudget;
+    static int maxStandard;
+    static long totalBudget;
+    static int answer;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
         budgetRequests = new int[N];
 
+        //input
         StringTokenizer st = new StringTokenizer(br.readLine());
-        long tempTotal = 0;
         for (int i = 0; i < N; i++) {
             budgetRequests[i] = Integer.parseInt(st.nextToken());
-            tempTotal += budgetRequests[i];
+            maxStandard = Math.max(maxStandard, budgetRequests[i]);
         }
 
-        maxBudget = Long.parseLong(br.readLine());
+        //이분 탐색의 대상 : 상한액
+        //해당 상한액을 기준으로 예산을 짰을때, 예산보다 작거나 같은 최댓값을 구해야 한다.
 
-        //상한액을 구할 필요가 없다면 그대로 return
-        if (tempTotal <= maxBudget) {
-            Arrays.sort(budgetRequests);
-            System.out.println(budgetRequests[budgetRequests.length - 1]);
-            return;
-        }
+        totalBudget = Long.parseLong(br.readLine());
 
-        //case 합 <= 예산
-            // -> 예산요청값 중 최대값 그대로 출력
-        //case 합 > 예산
-            // 상한액을 구한다.
-            // 최대 상한액을 구하고, 출력한다.
+        int lo = 0;
+        int hi = maxStandard;
 
-        //120 110 140 150 -> 520
-        //485
-        //35 부족
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
 
-        //상한액 기준점을 잡고 이분탐색..?
-        //상한액의 최대값은 maxBudget, 최소값은 maxBudget / N이다.
-        //따라서 이분탐색 첫 기준점은 (maxBudget + (maxBudget / N)) / 2
+            long sum = getSum(mid);
 
-        long start = maxBudget / N;
-        long end = maxBudget;
-        maxStandard = maxBudget / N;
-
-        while (start <= end) {
-            long standard = (start + end) / 2;
-            int totalCosts = 0;
-
-            //상한액이 충족되는지 계산
-            for (int i = 0; i < budgetRequests.length; i++) {
-                totalCosts += Math.min(budgetRequests[i], standard);
+            //예산 이내 값이라면
+            if (sum <= totalBudget) {
+                answer = mid;
+                lo = mid + 1;
+            } else { //예산보다 더 크다면
+                hi = mid - 1;
             }
+        }
 
-            //충족된다면 -> 여기서 끝이 아니라, 상한액을 더 늘려가면서 최대값을 찾아내야한다.
-            if (totalCosts < maxBudget) {
-                start = standard + 1;
-                maxStandard = standard;
-            } else if (totalCosts > maxBudget) {
-                end = standard - 1;
+        System.out.println(answer);
+    }
+
+    static long getSum(int limit) {
+        long sum = 0;
+
+        for (int i = 0; i < budgetRequests.length; i++) {
+            int budget = budgetRequests[i];
+
+            //상한액보다 크다면
+            if (budget > limit) {
+                sum += limit;
             } else {
-                maxStandard = standard;
-                break;
+                sum += budget;
             }
         }
 
-        System.out.println(maxStandard);
+        return sum;
     }
 }
