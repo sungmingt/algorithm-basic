@@ -10,20 +10,10 @@ public class boj_21939_priorityQueue {
     static int N, M;
 
     //오름차순 정렬
-    static Queue<Question> easyList = new PriorityQueue<>(new Comparator<Question>() {
-        @Override
-        public int compare(Question o1, Question o2) {
-            return (o1.level == o2.level) ? o1.num - o2.num : o1.level - o2.level;
-        }
-    });
+    static Queue<Question> easyList = new PriorityQueue<>((o1, o2) -> (o1.level == o2.level) ? o1.num - o2.num : o1.level - o2.level);
 
     //내림차순 정렬
-    static Queue<Question> hardList = new PriorityQueue<>(new Comparator<Question>() {
-        @Override
-        public int compare(Question o1, Question o2) {
-            return (o1.level == o2.level) ? o2.num - o1.num : o2.level - o1.level;
-        }
-    });
+    static Queue<Question> hardList = new PriorityQueue<>((o1, o2) -> (o1.level == o2.level) ? o2.num - o1.num : o2.level - o1.level);
 
     static Map<Integer, Integer> questions = new HashMap<>();
     static StringBuilder sb = new StringBuilder();
@@ -37,13 +27,10 @@ public class boj_21939_priorityQueue {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int num = Integer.parseInt(st.nextToken());
             int level = Integer.parseInt(st.nextToken());
-
-            questions.put(num, level);
-            easyList.offer(new Question(num, level));
-            hardList.offer(new Question(num, level));
+            addQuestion(num, level);
         }
 
-        //input command
+        //input + run command
         M = Integer.parseInt(br.readLine());
         for (int i = 0; i < M; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -56,11 +43,7 @@ public class boj_21939_priorityQueue {
             if (cmd.equals("add")) {
                 int num = Integer.parseInt(st.nextToken());
                 int level = Integer.parseInt(st.nextToken());
-
-                questions.put(num, level);
-                easyList.offer(new Question(num, level));
-                hardList.offer(new Question(num, level));
-
+                addQuestion(num, level);
             } else if (cmd.equals("solved")) {
                 int num = Integer.parseInt(st.nextToken());
                 questions.remove(num);
@@ -68,30 +51,44 @@ public class boj_21939_priorityQueue {
                 int x = Integer.parseInt(st.nextToken());
 
                 if (x == 1) {
-                    while (true) {
-                        Question hardest = hardList.peek();
-                        if (questions.containsKey(hardest.num) && questions.get(hardest.num) == hardest.level) {
-                            sb.append(hardest.num).append("\n");
-                            break;
-                        }
-
-                        hardList.poll(); //유효하지 않은 문제(이미 solved 된 문제)이면 삭제.
-                    }
+                    recommendHardest();
                 } else if (x == -1) {
-                    while (true) {
-                        Question easiest = easyList.peek();
-                        if (questions.containsKey(easiest.num) && questions.get(easiest.num) == easiest.level) {
-                            sb.append(easiest.num).append("\n");
-                            break;
-                        }
-
-                        easyList.poll(); //유효하지 않으면 삭제
-                    }
+                    recommendEasiest();
                 }
             }
         }
 
         System.out.println(sb);
+    }
+
+    static void addQuestion(int num, int level) {
+        questions.put(num, level);
+        easyList.offer(new Question(num, level));
+        hardList.offer(new Question(num, level));
+    }
+
+    static void recommendEasiest() {
+        while (true) {
+            Question easiest = easyList.peek();
+            if (questions.containsKey(easiest.num) && questions.get(easiest.num) == easiest.level) {
+                sb.append(easiest.num).append("\n");
+                break;
+            }
+
+            easyList.poll(); //유효하지 않으면 삭제
+        }
+    }
+
+    static void recommendHardest() {
+        while (true) {
+            Question hardest = hardList.peek();
+            if (questions.containsKey(hardest.num) && questions.get(hardest.num) == hardest.level) {
+                sb.append(hardest.num).append("\n");
+                break;
+            }
+
+            hardList.poll(); //유효하지 않은 문제(이미 solved 된 문제)이면 삭제.
+        }
     }
 
     static class Question {
