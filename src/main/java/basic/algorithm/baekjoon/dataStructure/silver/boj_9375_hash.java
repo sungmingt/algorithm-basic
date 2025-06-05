@@ -49,12 +49,6 @@ public class boj_9375_hash {
             sb.append(answer - 1).append("\n");
         }
 
-
-        //각 카테고리마다 1개씩 선택 가능.
-        //특정 카테고리만 선택하거나, 모두 선택하거나 가능.
-
-        //현재 카테고리를 선택하거나 or 선택하지 않거나
-
         System.out.println(sb);
     }
 }
