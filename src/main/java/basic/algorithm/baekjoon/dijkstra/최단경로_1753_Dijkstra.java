@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.bfs.gold;
+package basic.algorithm.baekjoon.dijkstra;
 
 import java.util.*;
 
