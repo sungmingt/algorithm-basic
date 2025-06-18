@@ -27,28 +27,29 @@ public class boj_10282_dijkstra {
                 graph.add(new ArrayList<>());
             }
 
-            // 의존성 입력 (b → a 방향으로, b가 감염되면 a가 s초 뒤 감염)
             for (int i = 0; i < D; i++) {
                 st = new StringTokenizer(br.readLine());
                 int a = Integer.parseInt(st.nextToken());
                 int b = Integer.parseInt(st.nextToken());
                 int s = Integer.parseInt(st.nextToken());
 
-                graph.get(b).add(new Edge(a, s)); // b → a (감염 전파)
+                graph.get(b).add(new Edge(a, s)); //b → a (감염 전파)
             }
 
-            // 다익스트라: 시작점에서의 최단 감염 시간
+            //해당 지점에서의 최단 감염 시간
             int[] dist = new int[N + 1];
             Arrays.fill(dist, Integer.MAX_VALUE);
             dist[C] = 0;
 
+            //감염 시간 기준 최신순(오름차순) 정렬
             PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(e -> e.cost));
             pq.offer(new Edge(C, 0));
 
             while (!pq.isEmpty()) {
                 Edge now = pq.poll();
 
-                if (dist[now.to] < now.cost) continue; // 이미 더 빠르게 처리됨
+                //이미 더 빠르게 처리된 적 있다면 -> skip
+                if (dist[now.to] < now.cost) continue;
 
                 for (Edge next : graph.get(now.to)) {
                     if (dist[next.to] > dist[now.to] + next.cost) {
@@ -58,7 +59,6 @@ public class boj_10282_dijkstra {
                 }
             }
 
-            // 결과 계산: 감염된 컴퓨터 수, 마지막 감염 시간
             int count = 0;
             int time = 0;
             for (int i = 1; i <= N; i++) {
