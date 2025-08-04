@@ -1,34 +1,33 @@
 package basic.algorithm.baekjoon.dataStructure.silver;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class boj_7785_hash {
 
     static int N;
-    static Map<String, String> latest;
+    static Set<String> latest;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        latest = new HashMap<>();
+        latest = new HashSet<>();
 
         while (N-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             String name = st.nextToken();
             String log = st.nextToken();
-            latest.put(name, log);
+
+            if (log.equals("enter")) {
+                latest.add(name);
+            } else {
+                latest.remove(name);
+            }
         }
 
         StringBuilder sb = new StringBuilder();
 
-        latest.keySet().stream()
-                .filter(l -> latest.get(l).equals("enter"))
+        latest.stream()
                 .sorted(Comparator.reverseOrder())
                 .forEach(n -> sb.append(n).append("\n"));
 
