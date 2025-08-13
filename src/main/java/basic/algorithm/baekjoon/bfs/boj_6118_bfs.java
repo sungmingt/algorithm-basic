@@ -54,7 +54,6 @@ public class boj_6118_bfs {
         }
 
         System.out.println(number + " " + maxDistance + " " + count);
-
     }
 
     private static void bfs() {
