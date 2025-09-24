@@ -8,7 +8,6 @@ public class boj_14503_bfs {
     static int N, M;
     static int cleanCnt;
     static int[][] map;
-    static boolean[][] visited;
     static int dir; //0,1,2,3 ->  북,동,남,서
     static int[] dX = {-1, 0, 1, 0};
     static int[] dY = {0, 1, 0, -1};
@@ -20,7 +19,6 @@ public class boj_14503_bfs {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         map = new int[N][M];
-        visited = new boolean[N][M];
 
         //pos/dir input
         st = new StringTokenizer(br.readLine());
@@ -62,7 +60,6 @@ public class boj_14503_bfs {
             if (map[cur.x][cur.y] == 0) {
                 map[cur.x][cur.y] = 2;
                 cleanCnt++;
-                visited[cur.x][cur.y] = true;
             }
 
             boolean isExists = false;
