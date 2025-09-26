@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class testRemind_250925 {
 
-    public static void main(String[] args) {
-        //100000 입력 시 1,000,000 와 같은 형태로 변경
+    //100000 입력 시 1,000,000 와 같은 형태로 변경
 
+    public static void main(String[] args) {
         String[] list = new String[]{"10000000", "1000", "100", "10000", "10000000000000"};
         Random r = new Random();
         int random = r.nextInt(list.length);
