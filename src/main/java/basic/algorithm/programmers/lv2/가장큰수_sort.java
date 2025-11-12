@@ -2,31 +2,32 @@ package basic.algorithm.programmers.lv2;
 
 import java.util.Arrays;
 
-public class 가장큰수_sort { //다시 풀어보기
+public class 가장큰수_sort {
 
+    //https://school.programmers.co.kr/learn/courses/30/lessons/42746
     public String solution(int[] numbers) {
-        //[4, 8, 21, 21, 2113]
-        //842232221
-
-        //String 배열로 이전
+        //toString
         String[] num = new String[numbers.length];
         for (int i = 0; i< numbers.length; i++) {
             num[i] = String.valueOf(numbers[i]);
         }
 
-        Arrays.sort(num, (o1, o2) -> {
-            //두개 붙여서 비교 후 더 큰 경우를 선택
-            return (Integer.parseInt(o2 + o1)) - Integer.parseInt(o1 + o2);
-        });
+        //42 4 3
+        //앞자리가 가장 큰 수를 앞에 놓는다.
+        //앞자리가 같은 경우, 두번째 자리로 비교한다.
+        //하지만, 각 자리수가 다르기때문에 첫째자리-둘째자리-셋째... 이렇게 비교하기 어렵다.
 
-        //{0, 0, 0, 0}의 경우 예외 처리
+        //두개를 이어붙였을때, 더 큰 값이 되도록 (내림차순)
+        Arrays.sort(num, (o1, o2) -> (Integer.parseInt(o2 + o1)) - Integer.parseInt(o1 + o2));
+
+        //0만 존재하는 경우
         if(num[0].equals("0")) return "0";
 
-        String answer = "";
-        for (String number : num) {
-            answer += number;
+        StringBuilder answer = new StringBuilder();
+        for (String n : num) {
+            answer.append(n);
         }
 
-        return answer;
+        return answer.toString();
     }
 }
