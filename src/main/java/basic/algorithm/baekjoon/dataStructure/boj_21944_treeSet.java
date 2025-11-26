@@ -1,8 +1,6 @@
 package basic.algorithm.baekjoon.dataStructure;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 public class boj_21944_treeSet {
@@ -60,89 +58,90 @@ public class boj_21944_treeSet {
 
         @Override
         public int compareTo(Question q) {
-            if (this.level == q.level) {
-                return this.idx - q.idx;
-            }
-
-            return this.level - q.level;
+            return this.level == q.level ? this.idx - q.idx : this.level - q.level;
         }
     }
 
-    static void doCommand(String cmd) {
+    private static void doCommand(String cmd) {
         StringTokenizer st = new StringTokenizer(cmd);
         String command = st.nextToken();
 
         switch (command) {
-            case "recommend":
-                int G = Integer.parseInt(st.nextToken());
-                int x = Integer.parseInt(st.nextToken());
-                TreeSet<Question> q = algorithms.get(G);
+            case "recommend" -> handleRecommend(st);
+            case "recommend2" -> handleRecommend2(st);
+            case "recommend3" -> handleRecommend3(st);
+            case "add" -> handleAdd(st);
+            case "solved" -> handleSolved(st);
+        }
+    }
 
-                if (x == 1) {
-                    int idx = q.last().idx;
-                    sb.append(idx).append("\n");
-                } else {
-                    int idx = q.first().idx;
-                    sb.append(idx).append("\n");
-                }
+    private static void handleSolved(StringTokenizer st) {
+        int idx = Integer.parseInt(st.nextToken());
+        Question targetQuestion = info.get(idx);
 
-                break;
-            case "recommend2":
-                x = Integer.parseInt(st.nextToken());
+        //remove
+        algorithms.get(targetQuestion.algorithm).remove(targetQuestion);
+        questions.remove(targetQuestion);
+        info.remove(idx);
+    }
 
-                if (x == 1) {
-                    int idx = questions.last().idx;
-                    sb.append(idx).append("\n");
-                } else {
-                    int idx = questions.first().idx;
-                    sb.append(idx).append("\n");
-                }
+    private static void handleAdd(StringTokenizer st) {
+        int idx = Integer.parseInt(st.nextToken());
+        int level = Integer.parseInt(st.nextToken());
+        int al = Integer.parseInt(st.nextToken());
+        Question question = new Question(al, idx, level);
 
-                break;
-            case "recommend3":
-                x = Integer.parseInt(st.nextToken());
-                int L = Integer.parseInt(st.nextToken());
-                Question std = new Question(-1, -1, L);
+        questions.add(question);
+        algorithms.computeIfAbsent(al, key -> new TreeSet<>())
+                .add(question);
+        info.putIfAbsent(idx, question);
+    }
 
-                if (x == 1) {
-                    Question ceiling = questions.ceiling(std);
-                    if (Objects.isNull(ceiling)) {
-                        sb.append(-1).append("\n");
-                    } else {
-                        sb.append(ceiling.idx).append("\n");
-                    }
-                } else {
-                    Question floor = questions.floor(std);
-                    if (Objects.isNull(floor)) {
-                        sb.append(-1).append("\n");
-                    } else {
-                        sb.append(floor.idx).append("\n");
-                    }
-                }
+    private static void handleRecommend3(StringTokenizer st) {
+        int x = Integer.parseInt(st.nextToken());
+        int L = Integer.parseInt(st.nextToken());
+        Question std = new Question(-1, -1, L);
 
-                break;
-            case "add":
-                int idx = Integer.parseInt(st.nextToken());
-                int level = Integer.parseInt(st.nextToken());
-                int al = Integer.parseInt(st.nextToken());
-                Question question = new Question(al, idx, level);
+        if (x == 1) {
+            Question ceiling = questions.ceiling(std);
+            if (Objects.isNull(ceiling)) {
+                sb.append(-1).append("\n");
+            } else {
+                sb.append(ceiling.idx).append("\n");
+            }
+        } else {
+            Question floor = questions.floor(std);
+            if (Objects.isNull(floor)) {
+                sb.append(-1).append("\n");
+            } else {
+                sb.append(floor.idx).append("\n");
+            }
+        }
+    }
 
-                questions.add(question);
-                algorithms.computeIfAbsent(al, key -> new TreeSet<>())
-                        .add(question);
-                info.putIfAbsent(idx, question);
+    private static void handleRecommend2(StringTokenizer st) {
+        int x = Integer.parseInt(st.nextToken());
 
-                break;
-            case "solved":
-                idx = Integer.parseInt(st.nextToken());
-                Question targetQuestion = info.get(idx);
+        if (x == 1) {
+            int idx = questions.last().idx;
+            sb.append(idx).append("\n");
+        } else {
+            int idx = questions.first().idx;
+            sb.append(idx).append("\n");
+        }
+    }
 
-                //remove
-                algorithms.get(targetQuestion.algorithm).remove(targetQuestion);
-                questions.remove(targetQuestion);
-                info.remove(idx);
+    private static void handleRecommend(StringTokenizer st) {
+        int G = Integer.parseInt(st.nextToken());
+        int x = Integer.parseInt(st.nextToken());
+        TreeSet<Question> q = algorithms.get(G);
 
-                break;
+        if (x == 1) {
+            int idx = q.last().idx;
+            sb.append(idx).append("\n");
+        } else {
+            int idx = q.first().idx;
+            sb.append(idx).append("\n");
         }
     }
 }
