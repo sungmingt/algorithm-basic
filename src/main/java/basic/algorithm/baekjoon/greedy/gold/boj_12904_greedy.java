@@ -11,8 +11,9 @@ public class boj_12904_greedy {
 
     public static void main(String[] args) throws IOException {
         //역방향 계산(T->S)
-        //마지막의 A를 지운다
-        //마지막의 B를 지우고, 문자열을 뒤집는다.
+        //역방향으로 생각하면 연산은 하나로 확정된다.
+        //1. 마지막이 A: 마지막의 A를 지운다
+        //2. 마지막이 B: 마지막의 B를 지우고, 문자열을 뒤집는다.
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         S = br.readLine();
