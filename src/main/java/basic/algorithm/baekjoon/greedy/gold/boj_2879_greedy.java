@@ -1,4 +1,4 @@
-package basic.algorithm.baekjoon.priorityQueue;
+package basic.algorithm.baekjoon.greedy.gold;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
