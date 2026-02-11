@@ -42,9 +42,7 @@ public class boj_2195_greedy {
         // -> 최대 길이로 복사햐애한다.
         // -> origin의 어떤 인덱스에서 복사할때 최대 길이가 되는지 구한다.
 
-        //idx = 현재 target에서 시작 위치
-        //origin의 모든 시작 인덱스 i에 대해 origin[i…] 와 target[idx…]가 몇 글자까지 연속으로 일치하는지 계산
-        //그중 최대 길이 maxLen을 선택하고, idx += maxLen, count++
-        //idx가 target 끝에 도달할 때까지 반복
+        //origin의 모든 시작 인덱스 i에 대해 target[targetFromIdx...]과 몇 글자까지 연속으로 일치하는지 계산
+        //그중 최대 길이만큼 갱신
     }
 }
