@@ -11,30 +11,17 @@ public class leetCode_two_sum_hashMap {
         //(target - 현재 요소) 인 숫자가 hashMap에 존재하는지 검사
 
         Map<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<nums.length; i++) {
-            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
-        }
-
-        int need = 0;
         int[] answer = new int[2];
 
-        for(int i=0; i<nums.length; i++) {
-            int num = nums[i];
-            need = target - num;
+        for (int i = 0; i < nums.length; i++) {
+            int need = target - nums[i];
 
-            if(map.containsKey(need)) {
-                if(map.get(need) > 0){
-                    answer[0] = i;
-                    break;
-                }
-            }
-        }
-
-        for(int i = 0; i<nums.length; i++) {
-            if(nums[i] == need) {
-                answer[1] = i;
+            if (map.containsKey(need)) {
+                answer = new int[]{map.get(need), i};
                 break;
             }
+
+            map.put(nums[i], i);
         }
 
         return answer;
